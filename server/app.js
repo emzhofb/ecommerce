@@ -1,10 +1,10 @@
-const express = require('express');
 const path = require('path');
-const cookieParser = require('cookie-parser');
-const logger = require('morgan');
-const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
 const cors = require('cors');
+const logger = require('morgan');
+const express = require('express');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 
 mongoose.set('useFindAndModify', false);
 mongoose.connect('mongodb://localhost:27017/ecommerce', {
@@ -13,7 +13,7 @@ mongoose.connect('mongodb://localhost:27017/ecommerce', {
 });
 
 const indexRouter = require('./routes/index');
-const ecommerceApi = require('./api/ecommerce');
+const ecommerceApi = require('./routes/api/ecommerce');
 
 const app = express();
 
