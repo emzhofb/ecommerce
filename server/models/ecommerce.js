@@ -15,12 +15,15 @@ const ecommerceSchema = new Schema({
     type: String
   },
   price: {
-    type: Number
+    type: String
   },
   brand: {
     type: String
   },
   detail_product: {
+    type: String
+  },
+  image: {
     type: String
   }
 });

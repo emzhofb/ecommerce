@@ -31,7 +31,7 @@ you never had before.
           </div>
           <div className="col-sm">
             <h2>iPhone XS Max</h2>
-            <span className="badge badge-info" style={{ height: '22px' }}>
+            <span className="badge badge-secondary" style={{ height: '22px' }}>
               Apple
             </span>
             <hr />
@@ -43,19 +43,19 @@ you never had before.
             </span>
             <h3>Rp 19.999.999,-</h3>
             <hr />
-            <button type="button" className="btn btn-success">
+            <button type="button" className="btn btn-info">
               <i className="fas fa-shopping-cart mx-sm-2" />
               Buy
             </button>
           </div>
         </div>
         <div className="row ml-3">
-          <ul class="nav nav-tabs">
-            <li class="nav-item">
-              <button class="nav-link active">Product Detail</button>
+          <ul className="nav nav-tabs">
+            <li className="nav-item">
+              <button className="nav-link active">Product Detail</button>
             </li>
-            <li class="nav-item">
-              <p class="nav-link">Testimonial</p>
+            <li className="nav-item">
+              <p className="nav-link">Testimonial</p>
             </li>
           </ul>
         </div>
