@@ -3,6 +3,8 @@ import { mdReact } from 'markdown-react-js';
 
 class Detail extends React.Component {
   render() {
+    console.log(this.props);
+    
     const desc = mdReact()(`This is an **iPhone XS Max**
 with *256GB Memory* and *4GB RAM* you will get a new experience.
 No worries about speed anymore, you will get the best experience
@@ -44,8 +46,10 @@ you never had before.
             <h3>Rp 19.999.999,-</h3>
             <hr />
             <button type="button" className="btn btn-info">
-              <i className="fas fa-shopping-cart mx-sm-2" />
-              Buy
+              <i className="fas fa-shopping-cart" /> Buy
+            </button>
+            <button className="btn btn-danger mx-sm-2">
+              <i className="fa fa-fw fa-heart" /> Vote
             </button>
           </div>
         </div>

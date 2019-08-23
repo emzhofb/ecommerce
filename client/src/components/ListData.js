@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { detailProduct } from '../actions';
 
 class ListData extends Component {
   render() {
@@ -39,7 +41,13 @@ class ListData extends Component {
             />
             <p className="card-text">{products.description}</p>
             <h4>Rp {products.price}</h4>
-            <Link className="btn btn-info">
+            <Link
+              to="/detail"
+              className="btn btn-info"
+              onClick={() => {
+                this.props.detailProduct(products);
+              }}
+            >
               DETAIL ITEM
             </Link>
           </div>
@@ -49,4 +57,15 @@ class ListData extends Component {
   }
 }
 
-export default ListData;
+const mapStateToProps = state => ({
+  detailProduct: state.detailProduct
+});
+
+const mapDispatchToProps = dispatch => ({
+  detailProduct: () => dispatch(detailProduct())
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ListData);

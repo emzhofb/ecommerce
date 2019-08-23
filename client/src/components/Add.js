@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { postProducts } from '../actions';
 
 class Add extends Component {
   constructor(props) {
@@ -64,7 +66,7 @@ class Add extends Component {
           })
           .catch(err => console.error(err));
       })
-      .catch(err => console.log(err));
+      .catch(err => console.error(err));
   };
 
   handleChange = e => {
@@ -231,4 +233,31 @@ class Add extends Component {
   }
 }
 
-export default Add;
+const mapDispatchToProps = dispatch => ({
+  postProducts: (
+    title,
+    rate,
+    description,
+    price,
+    brand,
+    detail_product,
+    image
+  ) => {
+    dispatch(
+      postProducts(
+        title,
+        rate,
+        description,
+        price,
+        brand,
+        detail_product,
+        image
+      )
+    );
+  }
+});
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(Add);

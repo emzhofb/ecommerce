@@ -1,31 +1,19 @@
 import React from 'react';
-import axios from 'axios';
 import ListData from './ListData';
+import { connect } from 'react-redux';
+import { loadProducts } from '../actions';
 
 class List extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      data: []
-    };
-  }
-
   componentDidMount() {
-    axios
-      .get('http://localhost:4000/api/ecommerce')
-      .then(res => {
-        this.setState({
-          data: [...res.data]
-        });
-      })
-      .catch(err => console.error(err));
+    this.props.loadProducts();
   }
 
   render() {
+    const { products } = this.props;
     return (
       <div>
         <div className="row">
-          {this.state.data.map((products, index) => {
+          {products.map((products, index) => {
             return <ListData products={products} key={index} />;
           })}
         </div>
@@ -64,4 +52,15 @@ class List extends React.Component {
   }
 }
 
-export default List;
+const mapStateToProps = state => ({
+  products: state.products
+});
+
+const mapDispatchToProps = dispatch => ({
+  loadProducts: () => dispatch(loadProducts())
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(List);
