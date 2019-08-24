@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { detailProduct } from '../actions';
+import { loadProduct } from '../actions';
 
 class ListData extends Component {
   render() {
@@ -44,9 +44,7 @@ class ListData extends Component {
             <Link
               to="/detail"
               className="btn btn-info"
-              onClick={() => {
-                this.props.detailProduct(products);
-              }}
+              onClick={() => this.props.loadProduct(products)}
             >
               DETAIL ITEM
             </Link>
@@ -58,11 +56,11 @@ class ListData extends Component {
 }
 
 const mapStateToProps = state => ({
-  detailProduct: state.detailProduct
+  loadProduct: state.product
 });
 
 const mapDispatchToProps = dispatch => ({
-  detailProduct: () => dispatch(detailProduct())
+  loadProduct: item => dispatch(loadProduct(item))
 });
 
 export default connect(

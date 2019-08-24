@@ -1,26 +1,18 @@
 import React from 'react';
 import { mdReact } from 'markdown-react-js';
+import { connect } from 'react-redux';
 
 class Detail extends React.Component {
   render() {
-    console.log(this.props);
-    
-    const desc = mdReact()(`This is an **iPhone XS Max**
-with *256GB Memory* and *4GB RAM* you will get a new experience.
-No worries about speed anymore, you will get the best experience
-you never had before.
+    const product = this.props.loadProduct.item;
+    const desc = mdReact()(product.detail_product);
 
-* 6.5" display Super Retina
-* Apple A12 Bionic
-* iOS 12`);
     return (
       <div>
         <div className="row">
           <div className="col-sm" style={{ height: '300px' }}>
             <img
-              src={
-                'https://www.costco.co.uk/medias/sys_master/images/hd8/h4f/11515701362718.jpg'
-              }
+              src={`http://localhost:4000/image/${product.image}`}
               alt=""
               style={{
                 maxHeight: '250px',
@@ -32,9 +24,9 @@ you never had before.
             />
           </div>
           <div className="col-sm">
-            <h2>iPhone XS Max</h2>
+            <h2>{product.title}</h2>
             <span className="badge badge-secondary" style={{ height: '22px' }}>
-              Apple
+              {product.brand}
             </span>
             <hr />
             <span
@@ -43,7 +35,7 @@ you never had before.
             >
               price
             </span>
-            <h3>Rp 19.999.999,-</h3>
+            <h3>Rp {product.price}</h3>
             <hr />
             <button type="button" className="btn btn-info">
               <i className="fas fa-shopping-cart" /> Buy
@@ -71,4 +63,8 @@ you never had before.
   }
 }
 
-export default Detail;
+const mapStateToProps = state => ({
+  loadProduct: state.product
+});
+
+export default connect(mapStateToProps)(Detail);

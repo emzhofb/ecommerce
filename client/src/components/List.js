@@ -17,7 +17,7 @@ class List extends React.Component {
             return <ListData products={products} key={index} />;
           })}
         </div>
-        <hr />
+        {/* <hr />
         <nav aria-label="Page navigation example">
           <ul className="pagination">
             <li className="page-item">
@@ -46,7 +46,7 @@ class List extends React.Component {
               </a>
             </li>
           </ul>
-        </nav>
+        </nav> */}
       </div>
     );
   }

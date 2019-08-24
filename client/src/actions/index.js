@@ -6,10 +6,10 @@ const request = axios.create({
   timeout: 1000
 });
 
-export const detailProduct = product => {
+export const loadProduct = product => {
   return {
     type: 'DETAIL_PRODUCT',
-    product
+    item: product
   };
 };
 
